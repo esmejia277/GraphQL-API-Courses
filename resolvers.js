@@ -8,6 +8,12 @@ const resolvers = {
         course: (rootValue, args) => Course.query().withGraphFetched('[teacher, comments]').findById(args.id),
         teacher: (rootValue, args) => Teacher.query().withGraphFetched('courses').findById(args.id),
         courses: () => Course.query()
+    },
+    Mutation: {
+        teacherAdd: (_, args) => {
+            return Teacher.query().insert(args.teacher)
+
+        }
     }
 }
 

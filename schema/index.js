@@ -11,6 +11,10 @@ const rootQuery = `
         course(id:Int): Course
         teacher(id: Int): Teacher
     }
+
+    type Mutation {
+        teacherAdd(teacher: newTeacher): Teacher
+    }
 `
 
 

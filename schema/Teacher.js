@@ -12,5 +12,11 @@ module.exports = `
         MALE
         FEMALE
     }
+    
+    input newTeacher {
+        name: String!,
+        gender: Gender!,
+        country: String!
+    }
 
 `
