@@ -5,7 +5,7 @@ const schema = require('./schema')
 
 const app = express()
 
-require('./db/setup')
+require('./db/setup.js')
 
 app.use(
     '/graphql',
