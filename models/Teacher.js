@@ -8,7 +8,7 @@ class Teacher extends Model {
 
   static get relationMappings() {
     return {
-      cursos: {
+      courses: {
         relation: Model.HasManyRelation,
         modelClass: path.join(__dirname, '/Course'),
         join: {
