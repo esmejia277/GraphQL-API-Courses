@@ -5,6 +5,8 @@ const schema = require('./schema')
 
 const app = express()
 
+require('./db/setup')
+
 app.use(
     '/graphql',
     bodyParser.json(),

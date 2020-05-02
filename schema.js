@@ -1,5 +1,6 @@
 const { makeExecutableSchema, addMockFunctionsToSchema } = require('graphql-tools')
-var casual = require('casual');
+const casual = require('casual');
+const Course = require('./models/Course')
 
 const typeDefs = `
      
