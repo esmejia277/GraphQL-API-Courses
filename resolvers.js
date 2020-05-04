@@ -13,6 +13,17 @@ const resolvers = {
         teacherAdd: (_, args) => {
             return Teacher.query().insert(args.teacher)
 
+        },
+        teacherUpdate: (_, args) => {
+            return Teacher.query().patchAndFetchById(args.id, args.teacher)
+
+        },
+        teacherDelete: (_, args) => {
+            return Teacher.query().findById(args.id).then((teacher) => {
+                return Teacher.query().deleteById(args.id).then(() => Teacher)
+
+            })
+
         }
     }
 }
