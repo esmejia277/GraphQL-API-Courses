@@ -20,11 +20,22 @@ const resolvers = {
         },
         teacherDelete: (_, args) => {
             return Teacher.query().findById(args.id).then((teacher) => {
-                return Teacher.query().deleteById(args.id).then(() => Teacher)
+                return Teacher.query().deleteById(args.id).then(() => teacher)
 
             })
 
-        }
+        },
+        courseAdd: (_, args) => {
+            return Course.query().insert(args.course)
+        },
+        courseUpdate: (_, args) => {
+            return Course.query().patchAndFetchById(args.id, args.course)
+        },
+        courseDelete: (_, args) => {
+            return Course.query().findById(args.id).then((course) => {
+                return Course.query().deleteById(args.id).then(() => course)
+            })
+        },
     }
 }
 
