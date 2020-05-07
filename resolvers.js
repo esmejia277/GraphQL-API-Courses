@@ -20,10 +20,13 @@ const resolvers = {
         },
         teacherDelete: (_, args) => {
             return Teacher.query().findById(args.id).then((teacher) => {
-                return Teacher.query().deleteById(args.id).then(() => teacher)
-
+                return Teacher.query().deleteById(args.id).then((deletedRows) => {
+                    if (deletedRows > 0) {
+                        return teacher
+                    }
+                    throw new Error(`Teacher with id ${args.id} could not delete`)
+                })
             })
-
         },
         courseAdd: (_, args) => {
             return Course.query().insert(args.course)
@@ -33,7 +36,12 @@ const resolvers = {
         },
         courseDelete: (_, args) => {
             return Course.query().findById(args.id).then((course) => {
-                return Course.query().deleteById(args.id).then(() => course)
+                return Course.query().deleteById(args.id).then((deletedRows) => {
+                    if (deletedRows > 0) {
+                        return course
+                    }
+                    throw new Error(`Course with id ${args.id} could not delete`)
+                })
             })
         },
     }
